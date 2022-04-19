@@ -1,5 +1,6 @@
 import React from 'react';
 import ExpenseItems from "./Components/Expenses/ExpenseItems";
+import NewExpense from "./Components/NewExpense/NewExpense";
 
 function App() {
     const expenses = [{id: 'e1', title: 'home', amount: 100, date: new Date(2020, 2, 28)}, {
@@ -16,8 +17,8 @@ function App() {
     // return React.createElement('div', null, React.createElement(ExpenseItems, {expenses: expenses}), React.createElement('h1', null, 'Hello World'));
     return (
         <div>
-            <h1>Let's get started</h1>
-            <ExpenseItems expenses={expenses}/>;
+            <NewExpense/>
+            <ExpenseItems expenses={expenses}/>
         </div>
     )
 }
