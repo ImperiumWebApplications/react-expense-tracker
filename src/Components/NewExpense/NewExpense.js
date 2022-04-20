@@ -1,8 +1,10 @@
-// import {useState} from "react";
+import {useState} from "react";
 import './NewExpense.css'
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+    const [formEditMode, setFormEditMode] = useState(false);
+
     const formDataHandler = (data) => {
         const expenseData = {
             ...data,
@@ -10,9 +12,17 @@ const NewExpense = (props) => {
         }
         props.onAddExpense(expenseData)
     }
+
+    const switchFormEditMode = () => {
+        setFormEditMode((prevState) => {
+            return !prevState
+        })
+    }
+
     return (
         <div className={'new-expense'}>
-            <ExpenseForm onFormSubmitHandler={formDataHandler}/>
+            <button onClick={switchFormEditMode}>Add New Expense</button>
+            {formEditMode && <ExpenseForm onFormSubmitHandler={formDataHandler}/>}
         </div>
     )
 }
